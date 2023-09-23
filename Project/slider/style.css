@@ -1,0 +1,79 @@
+*{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    overflow: hidden;
+}
+
+.slide-container {
+            width: 100%;
+            height:85vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background-color: rgb(110, 110, 250);
+        }
+
+        .image-slider{
+            width: 100%;
+            height: 600px;
+            position: absolute;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: 1s;
+        }
+        
+        .slides-div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 30px;
+        }
+
+        .img{
+            position: relative;
+            width: 240px;
+            height: 370px;
+            transition: 0.5s;
+        }
+
+        .button {
+            position: absolute;
+            width: 240px;
+            height: 370px;
+            transition: 0.5s;
+            background-color: rgba(67, 67, 151, 0.2);
+        }
+
+        #slider-span1:target ~ .image-slider #img1,
+        #slider-span1:target ~.image-slider #button-1{
+            width:380px;
+            height: 585px;
+            background-color: transparent;
+        }
+        #slider-span2:target ~ .image-slider #img2,
+        #slider-span2:target ~.image-slider #button-2{
+            width:380px;
+            height: 585px;
+            background-color: transparent;
+        }
+        #slider-span3:target ~ .image-slider #img3,
+        #slider-span3:target ~.image-slider #button-3{
+            width:380px;
+            height: 585px;
+            background-color: transparent;
+        }
+
+        #slider-span1:target ~.image-slider{
+            left:20%;
+        }
+        #slider-span2:target ~.image-slider{
+            left:0%;
+        }
+        #slider-span3:target ~.image-slider{
+            left:-20%;
+        }

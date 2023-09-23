@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider Sandbox</title>
+    <style>
+        body {
+            margin: 0; /* Remove default margin */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: black;
+            overflow: hidden;
+        }
+
+        .slide-container {
+            position: relative; /* Relative positioning for absolute child elements */
+            width: 100%;
+            max-width: 800px; /* Adjust the maximum width as needed */
+            height: 70vh; /* Adjust the slider height as needed */
+            overflow: hidden;
+        }
+
+        .image-slider {
+            display: flex;
+            transition: 1s;
+        }
+
+        .slide {
+            flex: 0 0 100%; /* Each slide takes up the full width of the container */
+            text-align: center; /* Center align the content in each slide */
+            padding: 20px; /* Add padding for spacing between slides */
+            box-sizing: border-box; /* Include padding and border in element's total width */
+        }
+
+        .slide img {
+            max-width: 100%; /* Ensure images don't exceed their container */
+            height: auto;
+        }
+
+        /* Navigation buttons */
+        .slider-nav {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .slider-nav button {
+            background: none;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 24px;
+            padding: 5px 10px;
+            margin: 0 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="image-slider">
+            <div class="slide" id="slide-1">
+                <img src="https://images.unsplash.com/photo-1482029255085-35a4a48b7084?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDF8fHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=900&q=60" alt="Slide 1">
+            </div>
+            <div class="slide" id="slide-2">
+                <img src="https://images.unsplash.com/photo-1516579486067-6d7ef4d67c1e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDExfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=900&q=60" alt="Slide 2">
+            </div>
+            <div class="slide" id="slide-3">
+                <img src="https://plus.unsplash.com/premium_photo-1664360971127-4afa228e90aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDh8fHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=900&q=60" alt="Slide 3">
+            </div>
+        </div>
+        
+        <!-- Navigation buttons -->
+        <div class="slider-nav">
+            <button onclick="prevSlide()">Previous</button>
+            <button onclick="nextSlide()">Next</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        
+        function showSlide(slideIndex) {
+            if (slideIndex < 0) {
+                slideIndex = slides.length - 1;
+            } else if (slideIndex >= slides.length) {
+                slideIndex = 0;
+            }
+            
+            slides.forEach((slide, index) => {
+                if (index === slideIndex) {
+                    slide.style.display = 'block';
+                } else {
+                    slide.style.display = 'none';
+                }
+            });
+            
+            currentSlide = slideIndex;
+        }
+        
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
+        
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+        
+        showSlide(currentSlide);
+    </script>
+</body>
+</html>
